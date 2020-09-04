@@ -1,0 +1,13 @@
+# Action metadata
+name: 'Anaconda make executor'
+description: 'Install all dependencies for Anaconda makefile and execute given make command'
+inputs:
+  make-command:  # id of input
+    description: 'what make command to execute'
+    required: true
+    default: 'pot-update-check'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.make-command }}
