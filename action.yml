@@ -3,11 +3,16 @@ name: 'Anaconda make executor'
 description: 'Install all dependencies for Anaconda makefile and execute given make command'
 inputs:
   make-command:  # id of input
-    description: 'what make command to execute'
+    description: 'What make command to execute'
     required: true
     default: 'pot-update-check'
+  path: # id of input
+    description: 'Path to the directory within a work directory'
+    required: false
+    default: .
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
+    - ${{ inputs.path }}
     - ${{ inputs.make-command }}

@@ -1,5 +1,7 @@
 #!/bin/sh -l
 
+cd $1
+
 ./autogen.sh && ./configure
 
-make $1
+make $2
